@@ -14,8 +14,8 @@ public enum TypeInstrument {
             new File("assets/piano/Pirates of the Caribbean - He's a Pirate (3).mid"),
             new File("assets/piano/oge.midi")),0),
     VIOLIN("Violin", Arrays.asList(
-            new File("assets/violin/bach_emajor_violin.mid")
-    ),40),
+            new File("assets/violin/bach_emajor_violin.mid"),
+            new File("assets/violin/Bwv1041 Violin Concerto n1 1mov.mid")),40),
     TRUMPET("Trumpet", Arrays.asList(
             new File("assets/trumpet/trumpet-call-from-beethoven-overture-leonore-no3.mid")
     ),56),
