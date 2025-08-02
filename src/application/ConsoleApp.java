@@ -9,8 +9,6 @@ import domian.ports.MusicPlayer;
 import domian.ports.NotesExecute;
 import domian.ports.Playable;
 import infraestructure.audio.MidiPlayer;
-
-import javax.sound.midi.MidiUnavailableException;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -53,7 +51,7 @@ public class ConsoleApp {
             }
 
 
-        } catch (MidiUnavailableException | NotFoundInstrumentException e) {
+        } catch (Exception e) {
             System.err.println("error inesperado");
             app();
         }finally {
