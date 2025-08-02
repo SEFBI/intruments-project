@@ -35,6 +35,20 @@ graph TD
 - **MusicPlayer:** Interfaz para reproducir notas y música. MidiPlayer es su implementación actual usando MIDI.
 - **Infraestructura:** Implementa detalles técnicos como la reproducción de audio (MidiPlayer).
 
+## Patrones de Diseño Utilizados
+
+- **Factory Pattern:**  
+  La clase `InstrumentFactory` centraliza la creación de instancias de instrumentos, permitiendo seleccionar el tipo de instrumento de manera flexible y desacoplada.
+
+- **Strategy pattern:**  
+  Cada instrumento (`Piano`, `Guitar`, `ElectricGuitar`, etc.) extiende de `InstrumentElement` e implementa su propia lógica para reproducir notas y música, usando polimorfismo.
+
+- **Puertos y Adaptadores (Hexagonal):**  
+  Las interfaces (`MusicPlayer`, `Playable`, `NotesExecute`) actúan como puertos para conectar la lógica de dominio con la infraestructura (por ejemplo, el reproductor MIDI).
+
+- **Singleton pattern:**  
+  El reproductor MIDI (`MidiPlayer`) se instancia como Singleton, asegurando que solo exista una instancia activa durante la ejecución.
+  
 ### Flujo principal
 
 1. El usuario inicia la aplicación y escoge un instrumento.
@@ -42,14 +56,6 @@ graph TD
 3. El usuario puede tocar notas individuales, secuencias o canciones predefinidas.
 4. InstrumentElement utiliza MusicPlayer (MidiPlayer) para reproducir el sonido.
 
-### Ventajas de esta arquitectura
 
-- **Separación de responsabilidades:** El núcleo del negocio no depende de detalles técnicos.
-- **Escalabilidad:** Permite agregar nuevos tipos de instrumentos, reproductores o interfaces fácilmente.
-- **Testabilidad:** La lógica de negocio y los contratos (interfaces) pueden probarse aisladamente.
 
-### Recomendaciones
 
-- Continúa documentando los módulos y su responsabilidad.
-- Considera agregar pruebas unitarias utilizando mocks de los puertos.
-- Si se agrega una interfaz gráfica o web, puede implementarse como otro adaptador sin modificar el núcleo.
